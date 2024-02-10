@@ -1,0 +1,8 @@
+#client
+
+login->deails like location -> menu with time -> extimated food left daily.->dashboRD
+
+#GOVERNEMNT 
+
+sign-ion-> dachboard 
+
