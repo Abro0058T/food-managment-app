@@ -1,0 +1,27 @@
+.orderBox{
+    box-shadow: 5px 2px 5px 0px rgb(192, 187, 187);
+    padding: 5px;
+    border-radius: 10px;
+
+}
+.table{
+    width: 100%;
+}
+table,th,td{
+    border-bottom: 2px solid rgb(210, 210, 210);
+    border-collapse: collapse;
+    /* background-color: red; */
+}
+.th{
+    width: fit-content;
+    padding: 15px;
+    
+}
+.td{
+    text-overflow: ellipsis;
+    padding: 10px 0px ;
+    /* display: flex;
+    flex-direction: column; */
+    overflow-x: hidden;
+    text-align: center;
+}
