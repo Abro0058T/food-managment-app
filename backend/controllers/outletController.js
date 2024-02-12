@@ -1,5 +1,3 @@
-
-
 const {v4 : uuidv4}=require("uuid")
 const Restaurant =require("../schema/restRegistation")
 const Menu=require("../schema/restMenu")
