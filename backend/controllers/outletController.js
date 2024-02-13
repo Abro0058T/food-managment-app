@@ -29,7 +29,7 @@ exports.login=async (req,res)=>{
     const {email,password}=req.body
     Restaurant.findOne({email}).then((data)=>{
        if(!data){
-           return res.status(401).send({auth:false, message:"No User Found!"});
+           return res.status(404).send({auth:false, message:"No User Found!"});
        }else{ 
         if(data.password!=password){
             res.status(401).json({message:"Wrong email or passowrd",status:401})

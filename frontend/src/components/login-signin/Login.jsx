@@ -1,15 +1,35 @@
 import React, { useState } from 'react';
+import { getRestaurantData } from '../../redux/restaurants/restaurantsActions';
+import axios from 'axios';
+import {Navigate, useNavigate} from 'react-router-dom'
 
 function Login() {
+  const navigate=useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
-  };
+    const result=await axios.post(`http://localhost:3000/api/v1/login`,{
+      email,password
+    }).then(response=>{
+      return response.data
+  
+    }).catch(error=>{
+      return error.response.data
+      })
 
+    if(result.status===401){
+      alert(result.message)
+    }
+    else{
+      console.log("hello wold ")
+     navigate(`/restaurant/${result.data.restaurant_id}`)
+    } 
+  };
+ 
   return (
     <div className="login-form">
       <h2>Login</h2>

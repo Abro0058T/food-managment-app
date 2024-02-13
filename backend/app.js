@@ -4,24 +4,17 @@ const app = express();
 
 // const errorMiddleware=require("./middleware/error")
 var bodyParser = require('body-parser')
-// const fileUpload=require("express-fileupload")
-// const dotenv=require('dotenv');
-// //config
-// dotenv.config({path:"config/config.env"})
+
 const cors=require('cors')
 const corsOptions = {
-  credentials: true,
+  credentials: false,
 };
 app.use(cors(corsOptions))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-// app.use(cookieParser())
 
-// app.use(bodyParser.urlencoded({extended:true}))
-// app.use(fileUpload())
-//Route Imports
 
 const outlet=require("./routes/outletRoute.js")
 const collector=require("./routes/collectorRoute.js")
