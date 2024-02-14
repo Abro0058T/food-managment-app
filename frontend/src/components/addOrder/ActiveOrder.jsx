@@ -61,6 +61,7 @@ function ActiveOrder() {
           "status": "Cancelled"
         }
       ]
+      
       var list =data.map((item,index)=>
         <tr key={item.order_id} className={style.tr}>
                   <td className={style.td}>{index}</td>

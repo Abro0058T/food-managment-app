@@ -1,22 +1,38 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Signin() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [country, setCountry] = useState('');
-  const [state, setState] = useState('');
-  const [city, setCity] = useState('');
-  const [address, setAddress] = useState('');
-  const [pincode, setPincode] = useState('');
-  const [phone, setPhone] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate=useNavigate();
+    const [data, setData] = useState({
+    name:'',
+    email:'',
+    country:'',
+    state:'',
+    city:'',
+    address:'',
+    zincode:'',
+    phone:'',
+    password:''
+  })
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-   
+    console.log(data)
+    const result =await axios.post(`${process.env.REACT_APP_BASE_URL_REST}/register`,data).then(response=>{
+      return response.data
+    }).catch(error=>{
+      return error
+    })
+    result.status==200?navigate(`/restaurant/${result.user.restaurant_id}`):alert("Error registrating .Please Try again")
   };
+  function onChandeData(e){
+    var id=e.target.id;
+    setData({
+      ...data,
+      [id]:e.target.value
+    })
+  }
 
   return (
     <div className="signup-form">
@@ -26,8 +42,8 @@ function Signin() {
         <input
           type="text"
           id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={data.name}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -35,8 +51,8 @@ function Signin() {
         <input
           type="email"
           id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={data.email}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -44,17 +60,17 @@ function Signin() {
         <input
           type="text"
           id="country"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
+          value={data.country}
+          onChange={(e) =>{onChandeData(e)}}
+         required
         />
 
         <label htmlFor="state">State:</label>
         <input
           type="text"
           id="state"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
+          value={data.state}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -62,8 +78,8 @@ function Signin() {
         <input
           type="text"
           id="city"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
+          value={data.city}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -71,17 +87,17 @@ function Signin() {
         <input
           type="text"
           id="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          value={data.address}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
-        <label htmlFor="pincode">Pincode:</label>
+        <label htmlFor="zincode">Pincode:</label>
         <input
           type="number"
-          id="pincode"
-          value={pincode}
-          onChange={(e) => setPincode(e.target.value)}
+          id="zincode"
+          value={data.zincode}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -89,8 +105,8 @@ function Signin() {
         <input
           type="tel"
           id="phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          value={data.phone}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
@@ -98,8 +114,8 @@ function Signin() {
         <input
           type="password"
           id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={data.password}
+          onChange={(e) =>{onChandeData(e)}}
           required
         />
 
