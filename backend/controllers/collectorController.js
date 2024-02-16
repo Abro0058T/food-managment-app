@@ -3,7 +3,8 @@ const Restaurant =require("../schema/restRegistation")
 const FoodCollector=require("../schema/collector")
 const OrderHistory=require("../schema/restHistory")
 exports.register=async (req,res)=>{
-    const {name,phone,email,password}=req.body;
+    console.log("helo world")
+    const {name,phone,email,password,area,restaurants_under}=req.body;
     const collector_id=await uuidv4();
      await FoodCollector.find({
         email
@@ -16,7 +17,7 @@ exports.register=async (req,res)=>{
       });
       const documentData = {
         collector_id,
-        name,email,phone,password
+        name,email,phone,password,area,restaurants_under
       };
       const user  = await FoodCollector.create(documentData)
     // console.log(resturantID)
@@ -27,6 +28,7 @@ exports.register=async (req,res)=>{
 }
 exports.login=async (req,res)=>{
     const {email,password}=req.body
+    console.log(email)
     FoodCollector.findOne({email}).then((data)=>{
        if(!data){
            return res.status(401).send({auth:false, message:"No User Found!"});

@@ -21,8 +21,8 @@ const collector=require("./routes/collectorRoute.js")
 // const user=require("./routes/userRoute")
 // const order=require("./routes/orderRoute")
 // const payment=require("./routes/paymentRouter")
+app.use("/api/v1/collector",collector)
 app.use("/api/v1",outlet);
-app.use("api/v1/collector",collector)
 
 // app.use("/api/v1",user);
 

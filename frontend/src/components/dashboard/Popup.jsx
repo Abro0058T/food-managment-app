@@ -39,7 +39,6 @@ function PopupBox() {
             total_quantity:60,
             status:"packing"
         }
-        console.log(order)
         setopen(false)
         dispatch(createOrderRestaurant(id,order))
     };

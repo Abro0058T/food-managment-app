@@ -9,29 +9,52 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [toggle,settoggle]=useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result=await axios.post(`http://localhost:3000/api/v1/login`,{
-      email,password
-    }).then(response=>{
-      return response.data
-  
-    }).catch(error=>{
-      return error.response.data
+    var result
+    if(toggle){
+       result=await axios.post(`http://localhost:3000/api/v1/collector/login`,{
+        email,password
+      }).then(response=>{
+        return response.data
+        
+      }).catch(error=>{
+        return error.response.data
       })
-
-    if(result.status===401){
-      alert(result.message)
+      if(result.status===401){
+        alert(result.message)
+      }
+      else{
+        console.log("hello wold ")
+       navigate(`/collector/${result.data.restaurant_id}`)
+      } 
+    
     }
-    else{
-      console.log("hello wold ")
-     navigate(`/restaurant/${result.data.restaurant_id}`)
-    } 
+else{
+
+   result=await axios.post(`http://localhost:3000/api/v1/login`,{
+    email,password
+  }).then(response=>{
+    return response.data
+    
+  }).catch(error=>{
+    return error.response.data
+  })
+  if(result.status===401){
+    alert(result.message)
+  }
+  else{
+    console.log("hello wold ")
+   navigate(`/restaurant/${result.data.restaurant_id}`)
+  } 
   };
- 
+}
+
+
   return (
     <div className="login-form">
+      <input type='checkbox' checked={toggle} onChange={()=>settoggle(!toggle)}/>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>

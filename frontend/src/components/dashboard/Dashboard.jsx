@@ -1,4 +1,4 @@
-import React,{useCallback, useState} from 'react'
+import React,{useCallback, useState,useEffect} from 'react'
 import style from './dashBoard.module.css'
 import AddOrder from '../addOrder/AddOrder'
 import { MdAdd } from 'react-icons/md'
@@ -7,8 +7,16 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {v4 as uuidv4} from "uuid"
 import PopupBox from './Popup'
+import { fetchOrderHistoryRestaurant, getRestaurantData } from '../../redux/restaurants/restaurantsActions'
+import { UseDispatch, useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 function Dashboard() {
-
+  const {id}=useParams()
+  const dispatch=useDispatch();
+  useEffect(()=>{
+    dispatch(getRestaurantData(id))
+    dispatch(fetchOrderHistoryRestaurant(id))
+  },[dispatch])
  return (
    <div className={style.dashboard}>
       {console.log("Dashboard rendering" )}
@@ -18,7 +26,6 @@ function Dashboard() {
 Add New Order,
       </h3>
 <PopupBox/>
-
       </div>
       <ActiveOrder/>
     

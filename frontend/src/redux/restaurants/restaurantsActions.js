@@ -4,9 +4,10 @@ export const getRestaurantData = (id) => async (dispatch) => {
   try {
     dispatch({ type: GET_RESTAURANT_DATA_REQUEST });
     // cosnt 
+    console.log(id)
     const result = await axios.get(`${process.env.REACT_APP_BASE_URL_REST}/restaurant/${id}`).then(response => {
-      console.log(response)
-      return response.data
+      console.log(response.data.data)
+      return response.data.data
     }).catch(error => {
       console.log(error)
       return error.response.message;
@@ -38,12 +39,12 @@ export const createOrderRestaurant = (id,order) => async (dispatch) => {
   }
 };
 
-export const fetchOrderHistoryRestaurant = ({ id }) => async (dispatch) => {
+export const fetchOrderHistoryRestaurant = (id) => async (dispatch) => {
   try {
     dispatch({ type: FETCH_ORDER_HISTORY_RESTAURANT_REQUEST });
-
+console.log(id)
     const result = await axios.get(`${process.env.REACT_APP_BASE_URL_REST}/history/${id}`);
-
+    console.log(result)
     dispatch({ type: FETCH_ORDER_HISTORY_RESTAURANT_SUCCESS, payload: result.data });
   } catch (error) {
     dispatch({ type: FETCH_ORDER_HISTORY_RESTAURANT_FAIL, payload: error });
@@ -69,7 +70,7 @@ export const fetchCollectorHistory = (collectorId) => async (dispatch) => {
     // Replace with your MongoDB query to fetch collector history
     const result = await axios.get(`${process.env.REACT_APP_BASE_URL_REST}/collectors/history/${collectorId}`);
 
-    dispatch({ type: FETCH_COLLECTOR_HISTORY_SUCCESS, payload: result.data });
+    dispatch({ type: FETCH_COLLECTOR_HISTORY_SUCCESS, payload: result });
   } catch (error) {
     dispatch({ type: FETCH_COLLECTOR_HISTORY_FAIL, payload: error });
   }

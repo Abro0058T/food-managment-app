@@ -11,6 +11,7 @@ import Login from './components/login-signin/Login';
 import History from './components/screens/History';
 import Settings from './components/screens/Settings';
 import Signin from './components/login-signin/Signin';
+import CollectorSiginin from './components/login-signin/CollectorSigninn';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/signin" element={<Signin/>}/>
 
+        <Route path="/collector/signin" element={<CollectorSiginin/>}/>
+        <Route path="/collector/:id" element={<CollectorDashBoard/>}/>
+        <Route path='/collector/history/:id' element={<History />} /> 
           <Route path="/restaurant/:id" element={<Restaurant />} >
           <Route path='dashboard' element={<Dashboard />} /> 
           <Route path='settings' element={<Settings />} /> 
