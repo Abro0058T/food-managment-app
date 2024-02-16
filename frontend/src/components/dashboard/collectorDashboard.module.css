@@ -1,0 +1,54 @@
+.app {
+    display: flex;
+    border: 1px solid red;
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    border: 1px solid blue;
+    padding: 10px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .dashboard {
+    padding: 20px;
+    border: 1px solid rgb(6, 255, 14);
+  }
+  
+  .dashboard table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .dashboard table th, .dashboard table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+.sideButtons{
+    padding-bottom: 10px;
+    font-size: 15px;
+
+}
+  
+  .dashboard table th {
+    text-align: left;
+  }
+  

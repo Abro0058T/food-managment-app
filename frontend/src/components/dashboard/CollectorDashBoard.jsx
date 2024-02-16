@@ -1,28 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import TopBar from '../topBar/TopBar'
-
-import Dashboard from '../dashboard/Dashboard'
-import { Link, Outlet ,useParams} from 'react-router-dom'
-import style from "./restaurant.module.css"
+import React, { useEffect } from 'react'
+import style from './collectorDashboard.module.css'
+import Sidebar from './Sidebar'
+import CollectorMainBoard from "./CollectorMainBoard.jsx"
+import { useDispatch } from 'react-redux'
+import { Link, Outlet, useParams } from 'react-router-dom'
 import { MdHistory, MdOutlineSettings, MdOutlineSpaceDashboard } from 'react-icons/md'
-import {useSelector,useDispatch} from 'react-redux'
-import { getRestaurantData } from '../../redux/restaurants/restaurantsActions'
-
-function Restaurant() {
-    const [restaurant, setRestaurant] = useState()
-    const dispatch=useDispatch()
+import { fetchCollectorHistory } from '../../redux/restaurants/restaurantsActions.js'
+function CollectorDashBoard() {
     const {id}=useParams();
-    useEffect(() => {
-        console.log(id)
-        dispatch(getRestaurantData(id))
-
-    }, [dispatch])
-    
-
-    return (
-        <div>
-            <TopBar />
-            <div className='dashboard'>
+    console.log(id)
+    const dispatch=useDispatch()
+    useEffect(()=>{
+        dispatch(fetchCollectorHistory(id))
+    },[dispatch])
+  return (
+    <div className={style.app} >
                 <div className={style.sideBar}>
                     <div className={style.sideButtons}><MdOutlineSpaceDashboard className={style.icons} />
                         <Link to="dashboard">
@@ -36,9 +28,8 @@ function Restaurant() {
                         Settings </Link></div>
                 </div>
                 <Outlet />
-            </div>
-        </div>
-    )
+  </div>
+  )
 }
 
-export default Restaurant;
+export default CollectorDashBoard

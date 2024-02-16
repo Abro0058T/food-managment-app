@@ -9,7 +9,7 @@ const router = express.Router();
 router.route('/register').post(register)
 router.route('/getAllRest/:id').get(getAllRest)
 router.route('/history/:id').get(history)
-router.route('/currentOrder/:id').get(currentOrder)
+router.route('/collector/:id').get(currentOrder)
 router.route('/updateStatus').patch(updateStatus)
 // login
 // get current order 

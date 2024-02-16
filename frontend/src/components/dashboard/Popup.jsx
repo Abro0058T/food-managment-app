@@ -7,14 +7,20 @@ import ActiveOrder from '../addOrder/ActiveOrder'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { v4 as uuidv4 } from "uuid"
+import { useDispatch ,useSelector } from 'react-redux'
+import {useParams} from 'react-router-dom'
+import { createOrderRestaurant } from '../../redux/restaurants/restaurantsActions'
 function PopupBox() {
+    const {restaurant}=useSelector(state=>state.restaurant)
     const [uuid, setuuid] = useState("")
     const [open, setopen] = useState(false)
     const [item, setitem] = useState('')
     const [quantity,setQuantity]=useState(0);
+    const {id}=useParams()
     const count = 0;
     const [orders, setorders] = useState([])
-    const memoizedUpdate = useCallback(() => setorders([1], count))
+    // const memoizedUpdate = useCallback(() => setorders([1], count))
+    const dispatch=useDispatch();
     function generateUuid() {
         setuuid(uuidv4())
         setopen(true)
@@ -22,11 +28,20 @@ function PopupBox() {
     function addOrder(){
         console.log("working ")
         setorders([...orders,{"name":item,"quantity":quantity}])
-        
+      
     };
     function placeOrder(){
-        console.log(orders)
+        const order={
+            order_id:uuid,
+            restaurant_id:id,
+            collector_id:restaurant[0].collector_id,
+            type:"Null for now",
+            dishes:orders,
+            total_quantity:60,
+            status:"packing"
+        }
         setopen(false)
+        dispatch(createOrderRestaurant(id,order))
     };
     return (
         <div>
@@ -52,6 +67,13 @@ function PopupBox() {
                                 <button onClick={addOrder}>
                                     Add
                                 </button>
+                                {
+                                    orders.map((item,index)=>(
+                                        // console.log(called)
+                                        // console.log("inside map function")
+                                        <p  key={`${item.id}-${index}`}>{item.name} - {item.quantity}</p>
+                                    ))
+                                }
                                 <div className={style.action}>
                                     <button
                                         className="button"

@@ -18,11 +18,11 @@ const foodCollectorSchema = new mongoose.Schema({
     }
   },
   area: {
-    type: Array,
+    type: String,//convert to array in future
    },
   restaurants_under: {
-    type: Object,
-    default: []
+    type: String , //convert to array in future
+    default: ''
   },
 password:{
 

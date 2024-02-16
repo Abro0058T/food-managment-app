@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-function Signin() {
+function CollectorSiginin() {
   const navigate=useNavigate();
     const [data, setData] = useState({
     name:'',
     email:'',
-    country:'',
-    state:'',
-    city:'',
-    address:'',
-    zincode:'',
-    phone:'',
+    area:'',
+    restaurants_under:'d84dff37-b07d-4764-a617-9ca86dd6fd0b',
     password:''
   })
   const [errorMessage, setErrorMessage] = useState('');
@@ -19,12 +15,14 @@ function Signin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(data)
-    const result =await axios.post(`${process.env.REACT_APP_BASE_URL_REST}/register`,data).then(response=>{
+    const result =await axios.post(`${process.env.REACT_APP_BASE_URL_REST}/collector/register`,data)
+    .then(response=>{
       return response.data
     }).catch(error=>{
       return error
     })
-    result.status==200?navigate(`/restaurant/${result.user.restaurant_id}`):alert("Error registrating .Please Try again")
+    // console.log(result)
+    result.status==200?navigate(`/collector/${result.user.restaurant_id}`):alert("Error registrating .Please Try again")
   };
   function onChandeData(e){
     var id=e.target.id;
@@ -56,51 +54,25 @@ function Signin() {
           required
         />
 
-        <label htmlFor="country">Country:</label>
+        <label htmlFor="area">Area:</label>
         <input
           type="text"
-          id="country"
-          value={data.country}
+          id="area"
+          value={data.area}
           onChange={(e) =>{onChandeData(e)}}
          required
         />
 
-        <label htmlFor="state">State:</label>
+        {/* <label htmlFor="restaurants">Restaurants:</label>
         <input
           type="text"
-          id="state"
-          value={data.state}
+          id="restaurants"
+          value={data.restaurants}
           onChange={(e) =>{onChandeData(e)}}
           required
-        />
+        /> */}
 
-        <label htmlFor="city">City:</label>
-        <input
-          type="text"
-          id="city"
-          value={data.city}
-          onChange={(e) =>{onChandeData(e)}}
-          required
-        />
-
-        <label htmlFor="address">Address:</label>
-        <input
-          type="text"
-          id="address"
-          value={data.address}
-          onChange={(e) =>{onChandeData(e)}}
-          required
-        />
-
-        <label htmlFor="zincode">Pincode:</label>
-        <input
-          type="number"
-          id="zincode"
-          value={data.zincode}
-          onChange={(e) =>{onChandeData(e)}}
-          required
-        />
-
+    
         <label htmlFor="phone">Phone number:</label>
         <input
           type="tel"
@@ -126,4 +98,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default CollectorSiginin;

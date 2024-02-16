@@ -29,7 +29,7 @@ exports.login=async (req,res)=>{
     const {email,password}=req.body
     Restaurant.findOne({email}).then((data)=>{
        if(!data){
-           return res.status(401).send({auth:false, message:"No User Found!"});
+           return res.status(404).send({auth:false, message:"No User Found!"});
        }else{ 
         if(data.password!=password){
             res.status(401).json({message:"Wrong email or passowrd",status:401})
@@ -69,18 +69,21 @@ exports.getRestData=async(req,res)=>{
 
 exports.createOrder=async (req,res)=>{
     const {id}=req.params;
-    const {type,dishes,collectior_id,total_quantity}=req.body
-    const order_id=await uuidv4()
+    const order=req.body
+    // const order_id=await uuidv4()
+ 
     const newOrder={
-        order_id,
-        restaurant_id:id,
-        collectior_id,
-        type,
-        dishes,
-        total_quantity,
-        status:'packing',
+        order_id:order.order_id,
+        restaurant_id:order.restaurant_id,
+        collector_id:order.collector_id,
+        type:order.type,
+        dishes:order.dishes,
+        total_quantity:order.total_quantity,
+        status:order.status,
     } 
-    const orderAdded= await OrderHistory.create()
+    console.log(req.body,"orders")
+    const orderAdded= await OrderHistory.create(newOrder)
+    
     res.status(200).json({
         orderAdded,
         status:200,

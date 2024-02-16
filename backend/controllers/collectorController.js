@@ -3,7 +3,8 @@ const Restaurant =require("../schema/restRegistation")
 const FoodCollector=require("../schema/collector")
 const OrderHistory=require("../schema/restHistory")
 exports.register=async (req,res)=>{
-    const {name,phone,email,password}=req.body;
+    console.log("helo world")
+    const {name,phone,email,password,area,restaurants_under}=req.body;
     const collector_id=await uuidv4();
      await FoodCollector.find({
         email
@@ -16,7 +17,7 @@ exports.register=async (req,res)=>{
       });
       const documentData = {
         collector_id,
-        name,email,phone,password
+        name,email,phone,password,area,restaurants_under
       };
       const user  = await FoodCollector.create(documentData)
     // console.log(resturantID)
@@ -27,15 +28,17 @@ exports.register=async (req,res)=>{
 }
 exports.login=async (req,res)=>{
     const {email,password}=req.body
+    // console.log(email)
     FoodCollector.findOne({email}).then((data)=>{
        if(!data){
+        // console.log(data,"34")
            return res.status(401).send({auth:false, message:"No User Found!"});
        }else{ 
         if(data.password!=password){
             res.status(401).json({message:"Wrong email or passowrd",status:401})
         } 
         else{
-
+            // console.log(data,"41")
             res.status(200).json({
                 data,message:"successful",status:200
             })
@@ -83,10 +86,19 @@ res.status(200).json({
 }
 
 exports.updateStatus=async(req,res)=>{
-    const {status,order_id}=req.body;
-    const update=await OrderHistory.updateOne({order_id:order_id},{$set:{status:status}})
+    const updateStatus=req.body;
+    console.log(updateStatus)
+    // const update=await OrderHistory.updateOne({order_id:order_id},{$set:{status:status}})
+    const update=await OrderHistory.updateOne(
+        { "order_id": updateStatus[0].order_id }, // Replace with actual ObjectId
+        { $set: { "status": updateStatus[0].status } } // Replace with desired status value
+      );
+      
+      console.log(update)
     res.status(200).json({
         update,status:200,
-        message:`The Status has been updated to ${status}`
+        message:`The Status has been updated to `
     })
 }
+
+
