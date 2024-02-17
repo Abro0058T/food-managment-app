@@ -10,7 +10,8 @@ import { v4 as uuidv4 } from "uuid"
 import { useDispatch ,useSelector } from 'react-redux'
 import {useParams} from 'react-router-dom'
 import { createOrderRestaurant } from '../../redux/restaurants/restaurantsActions'
-function PopupBox() {
+function PopupBox({orderAdd}) {
+
     const {restaurant}=useSelector(state=>state.restaurant)
     const [uuid, setuuid] = useState("")
     const [open, setopen] = useState(false)
@@ -42,6 +43,8 @@ function PopupBox() {
         }
         setopen(false)
         dispatch(createOrderRestaurant(id,order))
+        orderAdd("added")
+        setorders([])
     };
     return (
         <div>

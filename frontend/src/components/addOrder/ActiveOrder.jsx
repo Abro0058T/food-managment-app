@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom'
 import { getRestaurantData } from '../../redux/restaurants/restaurantsActions'
 function ActiveOrder() {
     const [content, setcontent] = useState(1)
+    const [refresh, setRefresh] = useState(false)
         const {restaurant} =useSelector((state)=>state.restaurant)
         const {history,loading} =useSelector((state)=>state.restaHistory)
       const dispatch=useDispatch()
@@ -29,7 +30,7 @@ function ActiveOrder() {
       )
       useEffect(()=>{
         dispatch(getRestaurantData(id))
-      },[dispatch,])
+      },[dispatch])
       console.log(list)
       console.log("activity ordr rendering ")
   return (

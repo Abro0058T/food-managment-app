@@ -13,6 +13,11 @@ import { useParams } from 'react-router-dom'
 function Dashboard() {
   const {id}=useParams()
   const dispatch=useDispatch();
+  const [orderAdd, setOrderAdded] = useState(false)
+  function orderAdded(added){
+    console.log("order added",added)
+  setOrderAdded(!orderAdd);
+  }
   useEffect(()=>{
     dispatch(getRestaurantData(id))
     dispatch(fetchOrderHistoryRestaurant(id))
@@ -25,7 +30,7 @@ function Dashboard() {
       <h3>
 Add New Order,
       </h3>
-<PopupBox/>
+<PopupBox orderAdd={orderAdded}/>
       </div>
       <ActiveOrder/>
     
