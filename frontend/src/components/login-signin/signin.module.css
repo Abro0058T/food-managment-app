@@ -1,0 +1,38 @@
+.login{
+    position: absolute;
+    top:10%;
+    left: 35%;
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 10px;
+    display: flex;
+    background-color: white;
+    align-items: center;
+    flex-direction: column;
+}
+input{
+    width: 40%;
+    margin-top: 10px;
+    height: 5vh;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+
+}
+.subBox{
+display: flex;
+flex-direction: column;
+justify-content: left;
+}
+
+input{
+    width: 80%;
+    margin-right: 60px;
+}
+.buttonSignin{
+    position: absolute;
+    bottom: 20px;
+
+}

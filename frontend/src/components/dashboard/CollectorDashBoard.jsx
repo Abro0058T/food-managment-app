@@ -17,15 +17,24 @@ function CollectorDashBoard() {
     <div className={style.app} >
                 <div className={style.sideBar}>
                     <div className={style.sideButtons}><MdOutlineSpaceDashboard className={style.icons} />
+                        <a className={style.linkColl}>
                         <Link to="dashboard">
-                            Dashboard
+                                Dashboard
                         </Link>
+                            </a>
                     </div>
                     <div className={style.sideButtons}><MdHistory className={style.icons} />
                         <Link to="history">
-                            Histoy</Link></div>
+                           <a className={style.linkColl}>
+                           Histoy
+                            </a> 
+                           </Link></div>
                     <div className={style.sideButtons}><MdOutlineSettings className={style.icons} />  <Link to="settings">
-                        Settings </Link></div>
+                      
+                    <a className={style.linkColl}>
+                        Settings 
+                        </a>  
+                        </Link></div>
                 </div>
                 <Outlet />
   </div>

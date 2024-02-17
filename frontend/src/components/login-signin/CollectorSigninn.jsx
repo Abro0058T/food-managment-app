@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import style from './collectorSignin.module.css'
 import { useNavigate } from 'react-router-dom';
 function CollectorSiginin() {
   const navigate=useNavigate();
@@ -33,9 +34,10 @@ function CollectorSiginin() {
   }
 
   return (
-    <div className="signup-form">
-      <h2>Sign Up</h2>
+    <div className={style.login}>
+      <h2  style={{marginBottom:"20px"}} >Sign Up</h2>
       <form onSubmit={handleSubmit}>
+      <div className={style.subBox}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -62,15 +64,17 @@ function CollectorSiginin() {
           onChange={(e) =>{onChandeData(e)}}
          required
         />
-
-        {/* <label htmlFor="restaurants">Restaurants:</label>
+        </div>
+        
+        <div className={style.subBox}>
+        <label htmlFor="restaurants">Restaurants:</label>
         <input
           type="text"
           id="restaurants"
           value={data.restaurants}
           onChange={(e) =>{onChandeData(e)}}
           required
-        /> */}
+        />
 
     
         <label htmlFor="phone">Phone number:</label>
@@ -90,9 +94,10 @@ function CollectorSiginin() {
           onChange={(e) =>{onChandeData(e)}}
           required
         />
+        </div>
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit">Sign Up</button>
+        <button className={style.buttonCollector} type="submit">Sign Up</button>
       </form>
     </div>
   );

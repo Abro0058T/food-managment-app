@@ -1,7 +1,6 @@
 import React from 'react';
 import style from './collectorDashboard.module.css'
 import { Link, Outlet } from 'react-router-dom';
-
 function Sidebar() {
   return (
     <div className={style.sidebar}>

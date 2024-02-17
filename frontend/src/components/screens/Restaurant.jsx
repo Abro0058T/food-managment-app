@@ -26,7 +26,9 @@ function Restaurant() {
                 <div className={style.sideBar}>
                     <div className={style.sideButtons}><MdOutlineSpaceDashboard className={style.icons} />
                         <Link to="dashboard">
-                            Dashboard
+                          <a className={style.buttons}> 
+                               Dashboard
+                            </a>
                         </Link>
                     </div>
                     <div className={style.sideButtons}><MdHistory className={style.icons} />
@@ -35,7 +37,9 @@ function Restaurant() {
                     <div className={style.sideButtons}><MdOutlineSettings className={style.icons} />  <Link to="settings">
                         Settings </Link></div>
                 </div>
+                <div className={style.dashboardBox}>
                 <Outlet />
+                </div>
             </div>
         </div>
     )

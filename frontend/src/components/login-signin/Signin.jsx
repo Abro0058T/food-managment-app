@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import style from "./signin.module.css"
 function Signin() {
   const navigate=useNavigate();
     const [data, setData] = useState({
@@ -35,9 +36,10 @@ function Signin() {
   }
 
   return (
-    <div className="signup-form">
-      <h2>Sign Up</h2>
+    <div className={style.login}>
+      <h2 style={{marginBottom:"20px"}}>Sign Up</h2>
       <form onSubmit={handleSubmit}>
+        <div className={style.subBox}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -73,7 +75,9 @@ function Signin() {
           onChange={(e) =>{onChandeData(e)}}
           required
         />
-
+             </div>
+             <div className={style.subBox}>
+             
         <label htmlFor="city">City:</label>
         <input
           type="text"
@@ -118,9 +122,10 @@ function Signin() {
           onChange={(e) =>{onChandeData(e)}}
           required
         />
-
+ 
+ </div>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit">Sign Up</button>
+        <button className={style.buttonSignin} type="submit">Sign Up</button>
       </form>
     </div>
   );

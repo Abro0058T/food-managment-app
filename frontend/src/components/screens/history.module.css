@@ -59,4 +59,8 @@
     /* height: 30px; */
   }
   
-  
+  .history{
+    overflow-y: scroll;
+    height: 100vh;
+    padding-top: 0px;
+  }

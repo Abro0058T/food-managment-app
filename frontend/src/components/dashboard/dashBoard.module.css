@@ -1,16 +1,19 @@
 .dashboard{
     height: 100%;
     width: 100%;
-    border: 1px solid red;
-    padding-left: 10px;
+    background-color: white;
+    /* padding-left: 10px; */
+    margin-left: 10px;
+    overflow-x: scroll;
+    border-radius: 10px;
     padding-top: 10px;
 }
-.button{
-    width: 10vw;
+.button2{
+    width: 5vw;
     padding: 10px;
     background-color: rgb(223, 194, 250);
     margin-left: 20px;
-    border: 2px solid rgb(164, 75, 248);
+    border: none;
     border-radius: 10%;
     font-size: 20px;
 }

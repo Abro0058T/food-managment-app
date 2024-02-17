@@ -2,13 +2,16 @@
     display: flex;
     border: 1px solid red;
     flex-direction: row;
+    width:200%;
   }
   
-  .sidebar {
+  .sideBar {
     width: 200px;
-    background-color: #f0f0f0;
-    border: 1px solid blue;
+    background-color: white;
+margin: 10px 0px 0px 10px ;
     padding: 10px;
+    border-radius: 10px;
+  
   }
   
   .sidebar ul {
@@ -29,7 +32,14 @@
   
   .dashboard {
     padding: 20px;
-    border: 1px solid rgb(6, 255, 14);
+    /* border: 1px solid rgb(6, 255, 14); */
+    margin-left: 2%;
+    margin-top: 2%;
+    width: 70vw;
+    background-color: white;
+    border-radius: 20px;
+    height: 100vh;
+    overflow-y: scroll;
   }
   
   .dashboard table {
@@ -44,11 +54,22 @@
   
 .sideButtons{
     padding-bottom: 10px;
-    font-size: 15px;
+    /* font-size: ; */
 
 }
   
   .dashboard table th {
     text-align: left;
   }
-  
+  .linkColl{
+    font-weight: 400;
+    font-size: 20px;
+    padding: 10px;
+ }
+
+
+ .icons{
+  font-size: 30px;
+  transform: translateY(5px);
+  color:rgb(73, 67, 67);
+ }

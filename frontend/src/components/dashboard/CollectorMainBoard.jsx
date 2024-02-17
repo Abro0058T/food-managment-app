@@ -38,7 +38,7 @@ function Dashboard() {
                 <h3>Loading </h3>
                 )
         :(
-      <table>
+      <table className={style.table}>
         <thead>
           <tr>
             <th>S.No</th>
@@ -48,7 +48,7 @@ function Dashboard() {
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={style.tbody}>
           {newHistory?.map((item, index) => (
          
              <tr key={index}>

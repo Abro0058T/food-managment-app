@@ -1,7 +1,8 @@
 .orderBox{
-    box-shadow: 5px 2px 5px 0px rgb(192, 187, 187);
     padding: 5px;
+    /* border: 2px solid rgb(199, 195, 195); */
     border-radius: 10px;
+    width: 98%;
 
 }
 .table{
@@ -10,12 +11,13 @@
 table,th,td{
     border-bottom: 2px solid rgb(210, 210, 210);
     border-collapse: collapse;
-    /* background-color: red; */
+    /* border: 2px solid rgb(199, 195, 195); */
+    border-radius: 10px;
 }
 .th{
     width: fit-content;
     padding: 15px;
-    
+    border-bottom: 2px solid rgb(199, 195, 195);
 }
 .td{
     text-overflow: ellipsis;

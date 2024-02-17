@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getRestaurantData } from '../../redux/restaurants/restaurantsActions';
 import axios from 'axios';
+import style from "./login.module.css"
 import {Navigate, useNavigate} from 'react-router-dom'
 
 function Login() {
@@ -54,10 +55,10 @@ else{
 
 
   return (
-    <div className="login-form">
-      <input type='checkbox' checked={toggle} onChange={()=>settoggle(!toggle)}/>
+    <div className={style.login}>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+
+      <form onSubmit={handleSubmit} className={style.formContainer}>
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -75,7 +76,11 @@ else{
           required
         />
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit">Login</button>
+      <div  className={style.checkBox}>
+      <p className={style.plogin}>Check for collector</p>
+      <input type='checkbox' checked={toggle} onChange={()=>settoggle(!toggle)}/>
+      </div>
+        <button className={style.buttonLogin} type="submit">Login</button>
       </form>
     </div>
   );

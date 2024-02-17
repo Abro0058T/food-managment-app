@@ -48,7 +48,7 @@ function PopupBox({orderAdd}) {
     };
     return (
         <div>
-            <button className={style.button} onClick={generateUuid}><MdAdd /></button>
+            <button className={style.button2} onClick={generateUuid}><MdAdd /></button>
             <Popup
                 open={open}
                 modal

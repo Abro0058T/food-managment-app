@@ -14,7 +14,7 @@ function History() {
 
     },[dispatch,id])
   return (
-    <div className={style.History}>
+    <div className={style.history}>
         {
             loading ?(
 

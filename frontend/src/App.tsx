@@ -17,7 +17,7 @@ import CollectorHistory from "./components/dashboard/CollectorHistory.jsx"
 import CollectorMainBoard from "./components/dashboard/CollectorMainBoard.jsx"
 function App() {
   return (
-    <>
+    <div style={{backgroundColor:'#E2E6EE'}}>
     <Provider store={store}>
 
 <BrowserRouter>
@@ -41,7 +41,7 @@ function App() {
     </Provider>
     {/* <Login/> */}
 
-    </>
+    </div>
   );
 }
 

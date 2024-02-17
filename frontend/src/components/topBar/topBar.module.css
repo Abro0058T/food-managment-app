@@ -1,5 +1,15 @@
 .topBar{
-    width: 100vw;
-    height: 5vh;
-    border: 2px solid red;
+    width: 96vw;
+    background-color: white;
+    height: 6vh;
+    border-radius: 10px;
+    margin-left: 10px;
+    transform: translateY(10px);
+    padding-left: 10px;
+}
+h2{
+    padding: 0px;
+    margin: 0px;
+    transform: translateY(5px);
+    text-align: center;
 }

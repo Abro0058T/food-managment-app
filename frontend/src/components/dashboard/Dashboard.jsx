@@ -26,9 +26,9 @@ function Dashboard() {
    <div className={style.dashboard}>
       {console.log("Dashboard rendering" )}
        
-      <div style={{display:"flex",alignItems:"center"}}>
+      <div style={{display:"flex",alignItems:"center",overflow:"scoll"}}>
       <h3>
-Add New Order,
+Add New Order
       </h3>
 <PopupBox orderAdd={orderAdded}/>
       </div>
