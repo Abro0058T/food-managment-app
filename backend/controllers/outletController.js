@@ -5,6 +5,7 @@ const OrderHistory=require("../schema/restHistory")
 exports.register=async (req,res)=>{
     const {name,email,country,state,city,address,zipcode,phone,password}=req.body;
     const restaurant_id=await uuidv4();
+    console.log(req.body)
      await Restaurant.find({
         email
       }).then(documents => {

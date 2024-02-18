@@ -20,12 +20,12 @@ function Signin() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(data)
-    const result =await axios.post(`${process.env.REACT_APP_BASE_URL_REST}/register`,data).then(response=>{
+    const result =await axios.post(`${import.meta.env.VITE_APP_BASE_URL_REST}/register`,data).then(response=>{
       return response.data
     }).catch(error=>{
       return error
     })
-    result.status==200?navigate(`/restaurant/${result.user.restaurant_id}`):alert("Error registrating .Please Try again")
+    result.status==200?navigate(`/restaurant/addMenu/${result.user.restaurant_id}`):alert("Error registrating .Please Try again")
   };
   function onChandeData(e){
     var id=e.target.id;

@@ -15,6 +15,7 @@ import CollectorSiginin from './components/login-signin/CollectorSigninn';
 import CollectorDashBoard from './components/dashboard/CollectorDashBoard.jsx'
 import CollectorHistory from "./components/dashboard/CollectorHistory.jsx"
 import CollectorMainBoard from "./components/dashboard/CollectorMainBoard.jsx"
+import RestaurantMenu from "./components/screens/RestaurantMenu.jsx"
 function App() {
   return (
     <div style={{backgroundColor:'#E2E6EE'}}>
@@ -31,6 +32,7 @@ function App() {
         <Route path='dashboard' element={<CollectorMainBoard />} /> 
 
         </Route>
+          <Route path="/restaurant/addMenu/:id" element={<RestaurantMenu/>}/>
           <Route path="/restaurant/:id" element={<Restaurant />} >
           <Route path='dashboard' element={<Dashboard />} /> 
           <Route path='settings' element={<Settings />} /> 

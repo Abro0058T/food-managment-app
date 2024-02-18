@@ -34,5 +34,18 @@ input{
 .buttonSignin{
     position: absolute;
     bottom: 20px;
+    border: none;
+    color:#5653F8;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 20px ;
+    
 
+
+}
+
+.subBox >input{
+    color: black;
+    padding: 5px ;
 }
