@@ -53,7 +53,7 @@ console.log(updatedMealData[day_][meal])
   return (
     <div className={restMenuStyle.menuContainer}>
         <a onClick={skip} className={restMenuStyle.skip}>
-            Skip
+            Next
         </a>
       <table>
         <thead>
